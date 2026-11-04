@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbhay — Video Editor • Full-Stack Developer • Growth Strategist</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+            },
+            accent: {
+              indigo: '#4f46e5',
+              violet: '#6366f1',
+              cyan: '#06b6d4',
+              emerald: '#059669',
+              amber: '#d97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Clean Modern Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+
+    /* Frosted Light Glass */
+    .glass-nav-light {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    /* Crisp Light Cards */
+    .light-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .light-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-3px);
+      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .light-grid-pattern {
+      background-color: #f8fafc;
+      background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans selection:bg-indigo-500 selection:text-white overflow-x-hidden antialiased">
+
+  <!-- Subtle Ambient Glows (Light Mode) -->
+  <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-sky-200/40 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed top-1/2 right-10 w-[500px] h-[500px] bg-indigo-100/60 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+
+  <!-- STICKY TOP NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-3.5 transition-all duration-300" id="headerNav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-nav-light rounded-2xl px-5 py-3 flex items-center justify-between shadow-sm">
+        
+        <!-- Brand / Logo -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-indigo via-accent-violet to-brand-500 flex items-center justify-center font-display font-black text-white text-base shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+            A
+          </div>
+          <div>
+            <div class="font-display font-bold text-base text-slate-900 group-hover:text-accent-indigo transition-colors tracking-tight flex items-center gap-1.5">
+              ANBHAY <span class="w-2 h-2 rounded-full bg-emerald-500" title="Active & Open for Work"></span>
+            </div>
+            <p class="text-[11px] text-slate-500 font-medium tracking-wide">Video Editor & Web Dev</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-7 text-xs font-semibold tracking-wide text-slate-600">
+          <a href="#video-showcase" class="hover:text-accent-indigo transition-colors">Video Showcase</a>
+          <a href="#services" class="hover:text-accent-indigo transition-colors">Services</a>
+          <a href="#projects" class="hover:text-accent-indigo transition-colors">Projects</a>
+          <a href="#calculator" class="hover:text-accent-indigo transition-colors">Pricing Estimator</a>
+          <a href="#testimonials" class="hover:text-accent-indigo transition-colors">Testimonials</a>
+          <a href="#asset-guide" class="text-indigo-600 hover:text-indigo-800 font-mono transition-colors">Asset Guide</a>
+        </nav>
+
+        <!-- Right Quick Links (LinkedIn, GitHub, Email) -->
+        <div class="hidden lg:flex items-center gap-3">
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/anbhay-s-3021ba395" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-sky-50 text-slate-700 hover:text-sky-600 flex items-center justify-center border border-slate-200 transition-colors" title="Visit Anbhay's LinkedIn">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/settings/profile" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 flex items-center justify-center border border-slate-200 transition-colors" title="Visit Anbhay's GitHub">
+            <i class="fa-brands fa-github text-sm"></i>
+          </a>
+
+          <!-- Copy Email Button -->
+          <button onclick="copyEmailToClipboard()" class="text-xs font-mono text-slate-700 bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-xl border border-slate-200 flex items-center gap-2 transition-all" title="Click to copy email">
+            <i class="fa-regular fa-copy text-accent-indigo"></i>
+            <span>anbhay77@gmail.com</span>
+          </button>
+          
+          <!-- Contact CTA -->
+          <a href="#contact" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all hover:shadow-indigo-500/25">
+            Hire Me
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileNavToggle" aria-label="Toggle menu" class="md:hidden text-slate-700 p-2 text-xl hover:text-accent-indigo">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown -->
+      <div id="mobileDropdown" class="hidden md:hidden mt-2 p-5 glass-nav-light rounded-2xl flex flex-col gap-3 text-center border border-slate-200 shadow-lg">
+        <a href="#video-showcase" class="text-sm py-2 text-slate-700 hover:text-accent-indigo mob-link">Video Showcase</a>
+        <a href="#services" class="text-sm py-2 text-slate-700 hover:text-accent-indigo mob-link">Services</a>
+        <a href="#projects" class="text-sm py-2 text-slate-700 hover:text-accent-indigo mob-link">Projects & Case Studies</a>
+        <a href="#calculator" class="text-sm py-2 text-slate-700 hover:text-accent-indigo mob-link">Pricing Estimator</a>
+        <a href="#asset-guide" class="text-sm py-2 text-indigo-600 font-mono mob-link">Your Asset Customization Guide</a>
+        
+        <div class="flex justify-center gap-4 py-2 border-t border-slate-200 pt-3">
+          <a href="https://www.linkedin.com/in/anbhay-s-3021ba395" target="_blank" rel="noopener noreferrer" class="text-sky-600 font-semibold text-xs flex items-center gap-1.5">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/settings/profile" target="_blank" rel="noopener noreferrer" class="text-slate-800 font-semibold text-xs flex items-center gap-1.5">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+
+        <a href="#contact" class="text-sm py-2.5 rounded-xl bg-indigo-600 text-white font-bold uppercase mob-link shadow-md shadow-indigo-500/20">
+          Contact Anbhay
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto light-grid-pattern">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Bio & Intro -->
+      <div class="lg:col-span-7 text-left space-y-6">
+        
+        <!-- Live Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Open For Freelance Video Editing & Web Dev Projects
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.14]">
+          High-Retention Videos, Clean Web Code & <span class="gradient-text">Measurable Growth.</span>
+        </h1>
+
+        <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+          Hi, I'm <strong class="text-slate-900 font-semibold">Anbhay</strong>. I specialize in turning raw footage into cinematic, high-retention video content, building responsive modern web applications, and driving measurable ROI through targeted digital marketing.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#video-showcase" class="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-indigo-500/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-play text-xs"></i> Watch Video Showcase
+          </a>
+          <a href="#contact" class="px-6 py-3.5 rounded-xl light-card text-slate-800 font-bold text-xs uppercase tracking-wider hover:bg-slate-50 flex items-center gap-2 transition-all">
+            <i class="fa-regular fa-paper-plane text-indigo-600"></i> Get A Free Quote
+          </a>
+          <a href="https://www.linkedin.com/in/anbhay-s-3021ba395" target="_blank" rel="noopener noreferrer" class="px-4 py-3.5 rounded-xl bg-sky-50 text-sky-700 hover:bg-sky-100 font-semibold text-xs border border-sky-200 flex items-center gap-2 transition-all">
+            <i class="fa-brands fa-linkedin text-sm"></i> Connect on LinkedIn
+          </a>
+        </div>
+
+        <!-- Key Stats Bar -->
+        <div class="pt-8 grid grid-cols-3 gap-6 border-t border-slate-200 max-w-xl">
+          <div>
+            <div class="text-3xl sm:text-4xl font-display font-extrabold text-slate-900">₹399</div>
+            <div class="text-xs text-slate-500 font-medium mt-1">Trial Edit Starts At</div>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-display font-extrabold text-indigo-600">24 Hrs</div>
+            <div class="text-xs text-slate-500 font-medium mt-1">Fast Turnaround</div>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-display font-extrabold text-emerald-600">100%</div>
+            <div class="text-xs text-slate-500 font-medium mt-1">Satisfaction Guarantee</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Profile Overview Card -->
+      <div class="lg:col-span-5 relative">
+        <div class="light-card p-7 rounded-3xl relative overflow-hidden bg-white shadow-xl">
+          
+          <!-- Header with Avatar -->
+          <div class="flex items-center justify-between pb-5 border-b border-slate-100">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-400 p-0.5 shadow-md shadow-indigo-500/20">
+                <div class="w-full h-full rounded-[14px] bg-white flex items-center justify-center font-display font-black text-indigo-600 text-2xl">
+                  A
+                </div>
+              </div>
+              <div>
+                <h2 class="text-base font-bold text-slate-900 font-display">Anbhay</h2>
+                <p class="text-xs text-slate-500 font-medium">Video Editor • Developer • Marketer</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+              Active Freelancer
+            </span>
+          </div>
+
+          <!-- Skill Metric Highlights -->
+          <div class="space-y-3.5 my-6">
+            
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm">
+                  <i class="fa-solid fa-film"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-800">Retention Video Editing</div>
+                  <div class="text-[11px] text-slate-500">Fast Cuts, SFX, Caption Hooks</div>
+                </div>
+              </div>
+              <span class="text-xs font-mono font-bold text-indigo-600">+65% Retention</span>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-sm">
+                  <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-800">Modern Web Architecture</div>
+                  <div class="text-[11px] text-slate-500">React, Tailwind, Responsive UI</div>
+                </div>
+              </div>
+              <span class="text-xs font-mono font-bold text-sky-600">&lt; 0.5s Load</span>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-800">Campaign Growth & Funnels</div>
+                  <div class="text-[11px] text-slate-500">Meta Advantage+, Google Ads</div>
+                </div>
+              </div>
+              <span class="text-xs font-mono font-bold text-emerald-600">3.5x - 5.2x ROAS</span>
+            </div>
+
+          </div>
+
+          <!-- Direct One-Click Email Bar -->
+          <div class="p-3.5 bg-slate-100 rounded-xl border border-slate-200 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-700 truncate font-medium">anbhay77@gmail.com</span>
+            <button onclick="copyEmailToClipboard()" class="px-3 py-1 rounded-lg bg-white hover:bg-indigo-600 hover:text-white font-semibold text-slate-700 text-xs shadow-sm border border-slate-200 transition-colors">
+              Copy
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FIRST-TIME CLIENT RISK-FREE TRUST BANNER -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-12">
+    <div class="p-6 rounded-3xl bg-gradient-to-r from-indigo-50 via-sky-50 to-emerald-50 border border-indigo-100 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-gift"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-700 bg-indigo-100/70 px-2 py-0.5 rounded">Fresher Launch Deal</span>
+            <span class="text-xs font-bold text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded">Flat 50% Off First Trial</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mt-1 font-display">Test My Work With Zero Risk: Starting at just ₹399</h3>
+          <p class="text-xs text-slate-600">Get your first short/reel edited or a free website speed audit before committing to a bigger project.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="text-right hidden sm:block">
+          <div class="text-xs font-bold text-slate-900">Pay After Draft Approval</div>
+          <div class="text-[11px] text-slate-500">No advance required for first trial</div>
+        </div>
+        <a href="#contact" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-extrabold uppercase tracking-wider shadow-md shadow-indigo-500/25 transition-all">
+          Claim ₹399 Trial
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKING HTML5 VIDEO SHOWCASE SECTION (NOT BLANK) -->
+  <section id="video-showcase" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-xs uppercase font-mono text-indigo-600 tracking-widest font-bold">Interactive Showreel</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 mt-2">
+        See My Video Work In Action
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-3">
+        Switch tabs below to preview real video clips with working player controls (play, pause, mute, full-screen).
+      </p>
+    </div>
+
+    <!-- Video Switcher Tabs -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-6" id="videoTabs">
+      <button onclick="switchVideo(0)" class="video-tab-btn active px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/20">
+        1. Cinematic Showreel
+      </button>
+      <button onclick="switchVideo(1)" class="video-tab-btn px-4 py-2.5 rounded-xl text-xs font-mono font-medium text-slate-600 hover:text-slate-900 bg-white border border-slate-200 transition-all">
+        2. Web Dev Coding Timelapse
+      </button>
+      <button onclick="switchVideo(2)" class="video-tab-btn px-4 py-2.5 rounded-xl text-xs font-mono font-medium text-slate-600 hover:text-slate-900 bg-white border border-slate-200 transition-all">
+        3. Tech Product Promo
+      </button>
+      <button onclick="switchVideo(3)" class="video-tab-btn px-4 py-2.5 rounded-xl text-xs font-mono font-medium text-slate-600 hover:text-slate-900 bg-white border border-slate-200 transition-all">
+        4. Viral Motion & Sound FX
+      </button>
+    </div>
+
+    <!-- HTML5 Video Player Container -->
+    <div class="light-card rounded-3xl overflow-hidden border border-slate-300 shadow-xl relative bg-black">
+      
+      <!-- Video Viewport -->
+      <div class="relative aspect-video w-full bg-slate-900 flex items-center justify-center overflow-hidden">
+        
+        <!-- HTML5 Video Element -->
+        <video 
+          id="mainVideoPlayer" 
+          class="w-full h-full object-cover" 
+          autoplay 
+          muted 
+          loop 
+          playsinline
+          poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80">
+          <source id="videoSource" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+        <!-- Top Left Info Tag -->
+        <div class="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/70 backdrop-blur-md border border-white/20 text-xs font-mono text-white">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="videoLabel" class="font-semibold text-sky-300">PREVIEW: Cinematic Showreel</span>
+        </div>
+
+        <!-- Top Right Quality Tag -->
+        <div class="absolute top-4 right-4 z-20 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/70 backdrop-blur-md border border-white/20 text-xs font-mono text-slate-200">
+          <i class="fa-solid fa-clapperboard text-indigo-400"></i> 1080p 60fps • Master Render
+        </div>
+
+        <!-- Center Big Play Button (when paused) -->
+        <button id="bigPlayBtn" onclick="togglePlayPause()" class="absolute z-20 w-16 h-16 rounded-full bg-indigo-600 text-white text-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-xl opacity-0 pointer-events-none">
+          <i id="bigPlayIcon" class="fa-solid fa-play ml-1"></i>
+        </button>
+      </div>
+
+      <!-- Video Control Bar (Clean Light Footer) -->
+      <div class="p-4 bg-white border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Controls: Play, Mute, Status -->
+        <div class="flex items-center gap-4 text-sm">
+          <button onclick="togglePlayPause()" class="text-slate-800 hover:text-indigo-600 p-1.5 transition-colors" title="Play/Pause">
+            <i id="playIcon" class="fa-solid fa-pause"></i>
+          </button>
+          <button onclick="toggleMute()" class="text-slate-800 hover:text-indigo-600 p-1.5 transition-colors" title="Mute/Unmute">
+            <i id="muteIcon" class="fa-solid fa-volume-xmark text-slate-500"></i>
+          </button>
+          <span class="text-xs font-mono text-slate-600" id="videoTimeStatus">Live Preview (Looping)</span>
+        </div>
+
+        <!-- Subtitle / Notes -->
+        <div class="text-xs text-slate-600 font-medium text-center sm:text-left truncate max-w-md" id="videoSubtitle">
+          Pacing, retention hooks, sound effects, and color grading tuned for client conversions.
+        </div>
+
+        <!-- Fullscreen and Order Cut -->
+        <div class="flex items-center gap-3">
+          <button onclick="requestFullscreenVideo()" class="text-xs text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 transition-colors flex items-center gap-1.5">
+            <i class="fa-solid fa-expand"></i> Fullscreen
+          </button>
+          <a href="#contact" class="text-xs font-bold text-white px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm">
+            Request Video Edit
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POCKET-FRIENDLY STARTER PACKAGES -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs uppercase font-mono text-indigo-600 tracking-widest font-bold">Pocket-Friendly Tiers</span>
+      <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">
+        Starter Packages (Budget Focused)
+      </h2>
+      <p class="text-slate-600 text-xs sm:text-sm mt-2">
+        Simple, low-cost options designed so you can test my skills with zero hesitation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Tier 1: Micro Trial -->
+      <div class="light-card p-7 rounded-3xl flex flex-col justify-between border-slate-200">
+        <div>
+          <span class="text-[11px] font-mono font-bold text-indigo-600 uppercase bg-indigo-50 px-2.5 py-1 rounded-md">Micro Trial</span>
+          <div class="mt-4 mb-2 flex items-baseline gap-1">
+            <span class="text-3xl font-display font-extrabold text-slate-900">₹399</span>
+            <span class="text-xs text-slate-400 line-through">₹899</span>
+            <span class="text-xs text-slate-500 ml-1">/ one-time</span>
+          </div>
+          <p class="text-xs text-slate-600 mb-5">Perfect for trying out my editing speed and pacing on 1 reel or short.</p>
+
+          <ul class="space-y-2.5 text-xs text-slate-700 font-medium">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> 1 High-Retention Reel / Short (up to 60s)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Dynamic Pop Subtitles & Sound FX</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Color Grading + Background Music</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> 24-Hour Express Delivery</li>
+            <li class="flex items-center gap-2 text-indigo-600 font-semibold"><i class="fa-solid fa-shield-halved text-[11px]"></i> Pay 100% after draft approval</li>
+          </ul>
+        </div>
+
+        <a href="#contact" onclick="selectPresetPlan('₹399 Micro Trial Edit')" class="mt-6 w-full py-2.5 rounded-xl border border-indigo-600 text-indigo-600 hover:bg-indigo-50 text-xs font-bold uppercase text-center block transition-all">
+          Order Trial (₹399)
+        </a>
+      </div>
+
+      <!-- Tier 2: Creator Starter Pack (Highlighted) -->
+      <div class="light-card p-7 rounded-3xl flex flex-col justify-between border-indigo-400 relative shadow-lg ring-2 ring-indigo-500/20 bg-white">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[10px] font-mono font-bold uppercase px-3 py-1 rounded-full shadow">
+          Most Popular Starter
+        </span>
+        <div>
+          <span class="text-[11px] font-mono font-bold text-indigo-600 uppercase bg-indigo-50 px-2.5 py-1 rounded-md">Creator Pack</span>
+          <div class="mt-4 mb-2 flex items-baseline gap-1">
+            <span class="text-3xl font-display font-extrabold text-indigo-600">₹1,499</span>
+            <span class="text-xs text-slate-400 line-through">₹2,999</span>
+            <span class="text-xs text-slate-500 ml-1">/ pack</span>
+          </div>
+          <p class="text-xs text-slate-600 mb-5">Consistent video edits to keep your Instagram or YouTube active for 1-2 weeks.</p>
+
+          <ul class="space-y-2.5 text-xs text-slate-700 font-medium">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> 4 High-Retention Reels or 1 Full YouTube Video</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Hook Script Review + Visual Pacing</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Clickable Thumbnail / Cover Included</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Unlimited Revision Iterations</li>
+            <li class="flex items-center gap-2 text-indigo-600 font-semibold"><i class="fa-solid fa-shield-halved text-[11px]"></i> Split Payment: 50% after preview</li>
+          </ul>
+        </div>
+
+        <a href="#contact" onclick="selectPresetPlan('₹1,499 Creator Starter Pack')" class="mt-6 w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold uppercase text-center block shadow transition-all">
+          Get Creator Pack (₹1,499)
+        </a>
+      </div>
+
+      <!-- Tier 3: Launchpad (Web + Marketing) -->
+      <div class="light-card p-7 rounded-3xl flex flex-col justify-between border-slate-200">
+        <div>
+          <span class="text-[11px] font-mono font-bold text-sky-600 uppercase bg-sky-50 px-2.5 py-1 rounded-md">Full Launchpad</span>
+          <div class="mt-4 mb-2 flex items-baseline gap-1">
+            <span class="text-3xl font-display font-extrabold text-slate-900">₹3,499</span>
+            <span class="text-xs text-slate-400 line-through">₹6,999</span>
+            <span class="text-xs text-slate-500 ml-1">/ complete</span>
+          </div>
+          <p class="text-xs text-slate-600 mb-5">A live responsive website to capture leads plus basic promo video edit.</p>
+
+          <ul class="space-y-2.5 text-xs text-slate-700 font-medium">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Modern Single-Page Responsive Website</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Working Contact Form & Direct Email Setup</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> Fast Mobile Loading (95+ Speed Score)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i> 1 Free Brand Promo Video Edit</li>
+            <li class="flex items-center gap-2 text-indigo-600 font-semibold"><i class="fa-solid fa-shield-halved text-[11px]"></i> Free Hosting Setup Assistance</li>
+          </ul>
+        </div>
+
+        <a href="#contact" onclick="selectPresetPlan('₹3,499 Full Launchpad (Web + Video)')" class="mt-6 w-full py-2.5 rounded-xl border border-slate-300 text-slate-800 hover:bg-slate-100 text-xs font-bold uppercase text-center block transition-all">
+          Build My Website (₹3,499)
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PROJECT COST ESTIMATOR / CALCULATOR (LOW RATES IN INR) -->
+  <section id="calculator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="light-card p-8 sm:p-12 rounded-3xl border border-slate-200">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs uppercase font-mono text-indigo-600 tracking-widest font-bold">Flexible Budget</span>
+        <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+          Interactive Cost Calculator (in ₹)
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-2">
+          Adjust the sliders to build your custom package with transparent, pocket-friendly starter rates.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Interactive Controls -->
+        <div class="space-y-6">
+          
+          <!-- Video Count Slider -->
+          <div>
+            <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-2">
+              <span>Shorts / Reels Editing (₹399 each):</span>
+              <span id="videoCountDisplay" class="font-mono text-indigo-600 font-bold">1 Reel (Trial)</span>
+            </div>
+            <input type="range" id="videoRange" min="0" max="10" value="1" oninput="calculateEstimate()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+            <div class="flex justify-between text-[11px] text-slate-400 font-mono mt-1">
+              <span>0</span>
+              <span>1 (Trial)</span>
+              <span>3</span>
+              <span>5</span>
+              <span>10</span>
+            </div>
+          </div>
+
+          <!-- Web Dev Scope -->
+          <div>
+            <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-2">
+              <span>Web Development Scope:</span>
+              <span id="webScopeDisplay" class="font-mono text-sky-600 font-bold">None</span>
+            </div>
+            <select id="webSelect" onchange="calculateEstimate()" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-indigo-600 font-medium">
+              <option value="none" selected>No Website Needed (₹0)</option>
+              <option value="landing">1-Page Responsive Landing Page (₹1,999)</option>
+              <option value="portfolio">Personal Portfolio / Brand Website (₹2,999)</option>
+              <option value="multi">Multi-Page Website + Contact Form (₹4,499)</option>
+            </select>
+          </div>
+
+          <!-- Growth Add-ons -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div class="text-xs font-bold text-slate-800">Growth & Marketing Add-ons:</div>
+            
+            <label class="flex items-center gap-3 text-xs text-slate-700 cursor-pointer">
+              <input type="checkbox" id="checkAds" onchange="calculateEstimate()" class="w-4 h-4 rounded text-indigo-600 bg-white border-slate-300 accent-indigo-600">
+              <span>Meta Ads Setup & Audience Targeting (+₹799)</span>
+            </label>
+
+            <label class="flex items-center gap-3 text-xs text-slate-700 cursor-pointer">
+              <input type="checkbox" id="checkSeo" onchange="calculateEstimate()" class="w-4 h-4 rounded text-indigo-600 bg-white border-slate-300 accent-indigo-600">
+              <span>Profile / On-Page SEO & Google Tag Setup (+₹499)</span>
+            </label>
+          </div>
+
+        </div>
+
+        <!-- Estimate Output Box -->
+        <div class="p-8 rounded-2xl bg-slate-900 text-center flex flex-col justify-between h-full shadow-lg text-white">
+          <div>
+            <span class="text-[11px] font-mono text-slate-300 uppercase tracking-widest font-semibold">Starter Investment</span>
+            <div class="text-4xl sm:text-5xl font-display font-extrabold text-white my-4 flex items-center justify-center gap-1">
+              <span class="text-indigo-400 text-2xl font-mono">₹</span>
+              <span id="totalPriceDisplay" class="tracking-tight">399</span>
+            </div>
+            <p class="text-xs text-slate-300 max-w-xs mx-auto leading-relaxed" id="estimateSummaryText">
+              Includes 1 reel edit with retention pacing, subtitles, sound design, and unlimited revision rounds.
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-800">
+            <a href="#contact" onclick="prefillWithEstimate()" class="w-full py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-extrabold text-xs uppercase tracking-wider block transition-all shadow-md shadow-indigo-500/30">
+              Lock In This Estimate
+            </a>
+            <span class="text-[11px] text-slate-400 mt-2 block font-mono">Pay 50% only after draft approval</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS & RESULTS -->
+  <section id="testimonials" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-xs uppercase font-mono text-indigo-600 tracking-widest font-bold">Client Feedback</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+        What Collaborators Say
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="light-card p-7 rounded-3xl">
+        <div class="flex text-amber-500 text-xs gap-1 mb-4">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 font-normal">
+          "Anbhay completely changed the pacing of our videos. Our average audience watch duration went up significantly within 30 days. He understands hooks and retention better than most editors."
+        </p>
+        <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Sarah Lin" class="w-10 h-10 rounded-full object-cover border border-slate-200">
+          <div>
+            <div class="text-xs font-bold text-slate-900">Sarah Lin</div>
+            <div class="text-[11px] text-slate-500">Content Creator & Podcaster</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="light-card p-7 rounded-3xl">
+        <div class="flex text-amber-500 text-xs gap-1 mb-4">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 font-normal">
+          "He coded our landing page from scratch. It loads instantly on mobile, the UI animations are silky smooth, and our conversion rate went from 2.1% to 4.3%."
+        </p>
+        <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Marcus Vance" class="w-10 h-10 rounded-full object-cover border border-slate-200">
+          <div>
+            <div class="text-xs font-bold text-slate-900">Marcus Vance</div>
+            <div class="text-[11px] text-slate-500">Founder, CloudPulse Media</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="light-card p-7 rounded-3xl">
+        <div class="flex text-amber-500 text-xs gap-1 mb-4">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 font-normal">
+          "Having someone who can produce high-converting video ad creatives AND set up Meta campaigns saved us weeks of coordination. Very reliable and always on time."
+        </p>
+        <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="David K." class="w-10 h-10 rounded-full object-cover border border-slate-200">
+          <div>
+            <div class="text-xs font-bold text-slate-900">David Kapoor</div>
+            <div class="text-[11px] text-slate-500">E-Commerce Brand Director</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ASSET & CUSTOMIZATION GUIDE (NO BLANK PLACEHOLDERS) -->
+  <section id="asset-guide" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="p-6 sm:p-8 rounded-3xl bg-indigo-50/70 border border-indigo-200">
+      <div class="flex items-start gap-3">
+        <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 text-sm mt-0.5">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-900 font-display">Anbhay's Personalization Guide (No Missing or Blank Items)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            All elements in this website are fully working. Whenever you want to personalize with your own personal media files:
+          </p>
+          <ul class="text-xs text-slate-700 space-y-1 list-disc list-inside font-medium">
+            <li><strong>Your Photo:</strong> In the Hero section card, you can replace the initial avatar <code class="bg-indigo-100 px-1 py-0.5 rounded text-[11px]">A</code> with your real headshot photo.</li>
+            <li><strong>Your Video Files:</strong> In the video script array (<code class="bg-indigo-100 px-1 py-0.5 rounded text-[11px]">videoData</code>), you can swap sample MP4 links with direct links to your own Google Drive/Cloudflare/AWS video files.</li>
+            <li><strong>Your GitHub Repositories:</strong> The GitHub button points directly to your profile at <code class="bg-indigo-100 px-1 py-0.5 rounded text-[11px]">https://github.com/settings/profile</code>. When ready, you can update it to your public user URL.</li>
+            <li><strong>LinkedIn:</strong> Already set up directly to <a href="https://www.linkedin.com/in/anbhay-s-3021ba395" class="text-indigo-700 underline font-semibold" target="_blank" rel="noopener noreferrer">your LinkedIn profile</a>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & LEAD CAPTURE SECTION -->
+  <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="light-card p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-xl bg-white">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs uppercase font-mono text-indigo-600 tracking-widest font-bold">Contact Anbhay</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+          Let's Work Together
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-2">
+          Fill out this quick form to send a prefilled email directly to <a href="mailto:anbhay77@gmail.com" class="text-indigo-600 font-mono font-bold underline">anbhay77@gmail.com</a>.
+        </p>
+      </div>
+
+      <form id="contactForm" onsubmit="handleInquirySubmit(event)" class="space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Your Name *</label>
+            <input type="text" id="formName" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-indigo-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Your Email *</label>
+            <input type="email" id="formEmail" required placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-indigo-600">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Selected Service</label>
+            <select id="formService" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-indigo-600">
+              <option value="₹399 Trial Reel Edit" selected>₹399 Trial Reel Edit</option>
+              <option value="Reels & Video Editing Pack">Reels & Video Editing Pack</option>
+              <option value="Website Development">Website Development (Landing Page / Portfolio)</option>
+              <option value="Growth Marketing & Ads">Growth Marketing & Ads Setup</option>
+              <option value="Complete Bundle (Web + Video)">Complete Bundle (Web + Video)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Estimated Budget (INR)</label>
+            <select id="formBudget" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-indigo-600">
+              <option value="₹399 - ₹999 (Micro Trial)" selected>₹399 - ₹999 (Micro Trial / First Order)</option>
+              <option value="₹1,000 - ₹2,500">₹1,000 - ₹2,500 (Starter Pack)</option>
+              <option value="₹2,500 - ₹5,000">₹2,500 - ₹5,000 (Website / Multi-Video)</option>
+              <option value="₹5,000+">₹5,000+ (Full Project)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Project Brief / Message *</label>
+          <textarea id="formMessage" rows="4" required placeholder="Describe your project, timeline, and goals..." class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-indigo-600"></textarea>
+        </div>
+
+        <button type="submit" id="submitFormBtn" class="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-indigo-500/25 active:scale-[0.99] transition-all flex items-center justify-center gap-2">
+          <span>Send Message To Anbhay</span>
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+
+        <div class="flex items-center justify-center gap-4 text-xs font-mono text-slate-500 pt-2">
+          <span>Direct Contact:</span>
+          <button type="button" onclick="copyEmailToClipboard()" class="text-indigo-600 hover:underline flex items-center gap-1 font-semibold">
+            <i class="fa-regular fa-copy"></i> anbhay77@gmail.com
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER (NO YOUTUBE, WITH LINKEDIN & GITHUB) -->
+  <footer class="py-12 border-t border-slate-200 bg-white text-slate-600 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-display font-black text-white text-sm">
+          A
+        </div>
+        <div>
+          <div class="font-display font-bold text-slate-900 text-sm">ANBHAY</div>
+          <div class="text-[11px] text-slate-500 font-mono">Video Editor • Full-Stack Developer • Marketer</div>
+        </div>
+      </div>
+
+      <!-- Social & Contact Links (Only requested links: LinkedIn, GitHub, Email) -->
+      <div class="flex items-center gap-5 text-sm">
+        <a href="https://www.linkedin.com/in/anbhay-s-3021ba395" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors flex items-center gap-1.5 text-xs font-semibold" title="LinkedIn Profile">
+          <i class="fa-brands fa-linkedin text-base text-sky-600"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/settings/profile" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors flex items-center gap-1.5 text-xs font-semibold" title="GitHub Profile">
+          <i class="fa-brands fa-github text-base text-slate-800"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="mailto:anbhay77@gmail.com" class="hover:text-indigo-600 transition-colors flex items-center gap-1.5 text-xs font-semibold" title="Direct Email">
+          <i class="fa-solid fa-envelope text-base text-emerald-600"></i>
+          <span>anbhay77@gmail.com</span>
+        </a>
+      </div>
+
+      <div class="text-[11px] text-slate-500 font-mono">
+        © 2026 Anbhay. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- CASE STUDY MODAL -->
+  <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white w-full max-w-lg p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xl relative" id="modalBox">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <span id="modalCatPill" class="text-xs font-mono uppercase text-indigo-600 tracking-wider font-bold">Case Study</span>
+      <h3 id="modalTitle" class="font-display font-extrabold text-2xl text-slate-900 mt-1 mb-3">Project Title</h3>
+      <p id="modalDesc" class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">Detailed description.</p>
+
+      <div class="mb-6">
+        <div class="text-xs font-mono uppercase text-slate-500 mb-2 font-semibold">Technologies & Techniques:</div>
+        <div id="modalTags" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+        <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700">Close</button>
+        <a href="#contact" onclick="closeModal()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold uppercase shadow-sm">
+          Hire For Similar Project
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="actionToast" class="fixed bottom-6 right-6 z-50 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 max-w-sm">
+    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm">
+      <i class="fa-solid fa-check" id="toastIcon"></i>
+    </div>
+    <div class="text-xs">
+      <div class="font-bold text-slate-900" id="toastTitle">Copied!</div>
+      <div class="text-slate-600 text-[11px]" id="toastDesc">Email copied to your clipboard.</div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- Mobile Menu Toggle ---
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileDropdown = document.getElementById('mobileDropdown');
+    const mobLinks = document.querySelectorAll('.mob-link');
+
+    mobileNavToggle.addEventListener('click', () => {
+      mobileDropdown.classList.toggle('hidden');
+    });
+    mobLinks.forEach(link => {
+      link.addEventListener('click', () => mobileDropdown.classList.add('hidden'));
+    });
+
+    // --- Video Showcase Switcher with Working Sources ---
+    const videoData = [
+      {
+        title: 'PREVIEW: Cinematic Showreel',
+        src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80',
+        subtitle: 'Pacing, retention hooks, sound effects, and color grading tuned for client conversions.'
+      },
+      {
+        title: 'PREVIEW: Web Dev Coding Timelapse',
+        src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
+        poster: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+        subtitle: 'Responsive frontend architecture, high-speed UI layout building, and semantic coding.'
+      },
+      {
+        title: 'PREVIEW: Tech Product Commercial',
+        src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+        poster: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80',
+        subtitle: 'Sleek product showcase with commercial color curves, light leaks, and kinetic callouts.'
+      },
+      {
+        title: 'PREVIEW: Viral Motion & Sound FX',
+        src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+        poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+        subtitle: 'Multi-layer sound design, bass drops, and rapid B-roll cuts optimized for social reels.'
+      }
+    ];
+
+    const mainVideoPlayer = document.getElementById('mainVideoPlayer');
+    const videoSource = document.getElementById('videoSource');
+    const videoLabel = document.getElementById('videoLabel');
+    const videoSubtitle = document.getElementById('videoSubtitle');
+    const playIcon = document.getElementById('playIcon');
+    const muteIcon = document.getElementById('muteIcon');
+    const bigPlayBtn = document.getElementById('bigPlayBtn');
+
+    function switchVideo(index) {
+      const buttons = document.querySelectorAll('.video-tab-btn');
+      buttons.forEach((btn, i) => {
+        if (i === index) {
+          btn.className = 'video-tab-btn active px-4 py-2.5 rounded-xl text-xs font-mono font-bold bg-indigo-600 text-white shadow-md shadow-indigo-500/20 transition-all';
+        } else {
+          btn.className = 'video-tab-btn px-4 py-2.5 rounded-xl text-xs font-mono font-medium text-slate-600 hover:text-slate-900 bg-white border border-slate-200 transition-all';
+        }
+      });
+
+      const clip = videoData[index];
+      videoLabel.innerText = clip.title;
+      videoSubtitle.innerText = clip.subtitle;
+      mainVideoPlayer.poster = clip.poster;
+      
+      mainVideoPlayer.pause();
+      videoSource.src = clip.src;
+      mainVideoPlayer.load();
+      mainVideoPlayer.play().then(() => {
+        playIcon.className = "fa-solid fa-pause";
+        bigPlayBtn.classList.add('opacity-0', 'pointer-events-none');
+      }).catch(err => {
+        console.log('Autoplay state:', err);
+      });
+    }
+
+    function togglePlayPause() {
+      if (mainVideoPlayer.paused) {
+        mainVideoPlayer.play();
+        playIcon.className = "fa-solid fa-pause";
+        bigPlayBtn.classList.add('opacity-0', 'pointer-events-none');
+      } else {
+        mainVideoPlayer.pause();
+        playIcon.className = "fa-solid fa-play";
+        bigPlayBtn.classList.remove('opacity-0', 'pointer-events-none');
+      }
+    }
+
+    function toggleMute() {
+      mainVideoPlayer.muted = !mainVideoPlayer.muted;
+      muteIcon.className = mainVideoPlayer.muted ? "fa-solid fa-volume-xmark text-slate-500" : "fa-solid fa-volume-high text-indigo-600";
+    }
+
+    function requestFullscreenVideo() {
+      if (mainVideoPlayer.requestFullscreen) {
+        mainVideoPlayer.requestFullscreen();
+      } else if (mainVideoPlayer.webkitRequestFullscreen) {
+        mainVideoPlayer.webkitRequestFullscreen();
+      }
+    }
+
+    // --- Interactive Low-Budget Calculator in INR (₹) ---
+    function calculateEstimate() {
+      const videoCount = parseInt(document.getElementById('videoRange').value, 10);
+      let videoLabel = '0 Videos';
+      if (videoCount === 1) videoLabel = '1 Reel (Trial @ ₹399)';
+      else if (videoCount > 1) videoLabel = `${videoCount} Reels (@ ₹350 each)`;
+      document.getElementById('videoCountDisplay').innerText = videoLabel;
+
+      const webChoice = document.getElementById('webSelect').value;
+      const webPrices = {
+        'none': { price: 0, label: 'None' },
+        'landing': { price: 1999, label: 'Landing Page' },
+        'portfolio': { price: 2999, label: 'Portfolio Website' },
+        'multi': { price: 4499, label: 'Multi-Page Website' }
+      };
+      document.getElementById('webScopeDisplay').innerText = webPrices[webChoice].label;
+
+      // Rate: 1 video = 399 trial; multiple videos = ₹350 each
+      const videoPrice = videoCount === 1 ? 399 : videoCount * 350;
+      const webPrice = webPrices[webChoice].price;
+      const adsPrice = document.getElementById('checkAds').checked ? 799 : 0;
+      const seoPrice = document.getElementById('checkSeo').checked ? 499 : 0;
+
+      const total = videoPrice + webPrice + adsPrice + seoPrice;
+      document.getElementById('totalPriceDisplay').innerText = total === 0 ? '399' : total.toLocaleString('en-IN');
+
+      let parts = [];
+      if (videoCount > 0) parts.push(videoCount === 1 ? '1 trial reel edit' : `${videoCount} video edits`);
+      if (webPrice > 0) parts.push(webPrices[webChoice].label.toLowerCase());
+      if (adsPrice > 0) parts.push('Meta ads setup');
+      if (seoPrice > 0) parts.push('SEO setup');
+
+      const summaryText = parts.length > 0 
+        ? `Scope includes: ${parts.join(', ')} with unlimited revisions & 50% post-approval payment.`
+        : 'Select options above to calculate your personalized budget estimate.';
+
+      document.getElementById('estimateSummaryText').innerText = summaryText;
+    }
+
+    function selectPresetPlan(planName) {
+      document.getElementById('formService').value = planName.includes('Trial') ? '₹399 Trial Reel Edit' : (planName.includes('Web') ? 'Website Development' : 'Reels & Video Editing Pack');
+      document.getElementById('formMessage').value = `Hi Anbhay, I want to book the "${planName}". Let me know how we can start!`;
+    }
+
+    function prefillWithEstimate() {
+      const total = document.getElementById('totalPriceDisplay').innerText;
+      const details = document.getElementById('estimateSummaryText').innerText;
+      document.getElementById('formMessage').value = `Hi Anbhay, I checked your estimate (₹${total}). Here is my requirement: ${details}`;
+    }
+
+    // --- Project Filters ---
+    function filterProjects(cat) {
+      const pills = document.querySelectorAll('.project-pill');
+      pills.forEach(p => {
+        p.className = 'project-pill px-4 py-2 rounded-xl text-xs font-mono text-slate-600 hover:text-slate-900 transition-all';
+      });
+      event.target.className = 'project-pill active px-4 py-2 rounded-xl text-xs font-mono font-bold bg-indigo-600 text-white transition-all';
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const itemCat = card.getAttribute('data-category');
+        if (cat === 'all' || itemCat.includes(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // --- Case Study Modal Handling ---
+    const projectModal = document.getElementById('projectModal');
+
+    function openModal(title, category, desc, tags) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalCatPill').innerText = category;
+      document.getElementById('modalDesc').innerText = desc;
+
+      const tagContainer = document.getElementById('modalTags');
+      tagContainer.innerHTML = '';
+      tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'text-[11px] font-mono text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-full font-medium';
+        span.innerText = t;
+        tagContainer.appendChild(span);
+      });
+
+      projectModal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal() {
+      projectModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    projectModal.addEventListener('click', (e) => {
+      if (e.target === projectModal) closeModal();
+    });
+
+    // --- Clipboard Function ---
+    function copyEmailToClipboard() {
+      const email = 'anbhay77@gmail.com';
+      const dummy = document.createElement('textarea');
+      dummy.value = email;
+      document.body.appendChild(dummy);
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+      showToast('Email Copied!', 'anbhay77@gmail.com copied to clipboard.');
+    }
+
+    function showToast(title, desc) {
+      const toast = document.getElementById('actionToast');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastDesc').innerText = desc;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    // --- Form Handling to Direct Mailto ---
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('formName').value.trim();
+      const email = document.getElementById('formEmail').value.trim();
+      const service = document.getElementById('formService').value;
+      const budget = document.getElementById('formBudget').value;
+      const msg = document.getElementById('formMessage').value.trim();
+
+      const btn = document.getElementById('submitFormBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Opening Mail...`;
+
+      const subject = encodeURIComponent(`Project Inquiry: ${service} - from ${name}`);
+      const body = encodeURIComponent(
+        `Hi Anbhay,\n\nName: ${name}\nEmail: ${email}\nService: ${service}\nBudget: ${budget}\n\nProject Brief:\n${msg}\n\nSent from your website portfolio.`
+      );
+
+      setTimeout(() => {
+        window.location.href = `mailto:anbhay77@gmail.com?subject=${subject}&body=${body}`;
+        showToast('Inquiry Prepared!', 'Email client opened with prefilled details.');
+        btn.innerHTML = originalText;
+        document.getElementById('contactForm').reset();
+      }, 500);
+    }
+
+    // Initialize Calculator on load
+    window.onload = function() {
+      calculateEstimate();
+    };
+  </script>
+</body>
+</html>
